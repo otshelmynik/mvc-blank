@@ -1,0 +1,5 @@
+-- Для инициализации БД выполните:
+-- mysql -u root -p mvc_blank < migrations/001_initial_schema.sql
+--
+-- Или используйте Docker:
+-- docker-compose exec app mysql -u root -p mvc_blank < migrations/001_initial_schema.sql

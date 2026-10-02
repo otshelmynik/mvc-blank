@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  # Веб-сервер (PHP + Apache)
+  app:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      # Синхронизация кода (хост → контейнер)
+      - .:/var/www/html
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: mvc_blank
+      DB_USER: mvc_user
+      DB_PASSWORD: mvc_password
+
+  # База данных (MySQL 8.0)
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: mvc_blank
+      MYSQL_USER: mvc_user
+      MYSQL_PASSWORD: mvc_password
+    ports:
+      - "3316:3306"
+    volumes:
+      # Данные MySQL сохраняются между перезапусками
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:

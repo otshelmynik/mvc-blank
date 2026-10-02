@@ -1,0 +1,12 @@
+# Игнорируем файлы, не нужные в Docker
+.git
+.gitignore
+.idea
+.vscode
+*.log
+.env
+.dockerignore
+Dockerfile
+docker-compose.yml
+*.md
+.gigacode
